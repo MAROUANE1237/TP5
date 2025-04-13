@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz Interactif</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1> Quiz Interactif</h1>
+  <p>Clique sur le bouton pour commencer le test !</p>
+  <button onclick="lancerQuiz()">Démarrer le Quiz</button>
+
+  <footer>
+    Créé avec  par  KhouyaMarouane
+  </footer>
+  <script>
+    const QUESTIONS = [
+      ["Quelle est la capitale de la France ?", "Paris"],
+      ["Quelle est la plus haute montagne du monde ?", "Everest"],
+      ["Quel langage est utilisé côté client pour les sites web ?", "JavaScript"],
+      ["Combien de planètes dans le système solaire ?", "8"],
+      ["Qui a écrit 'Le Petit Prince' ?", "Antoine de Saint-Exupéry"]
+    ];
+
+    function lancerQuiz() {
+      let score = 0;
+
+      for (let i = 0; i < QUESTIONS.length; i++) {
+        let question = QUESTIONS[i][0];
+        let reponseCorrecte = QUESTIONS[i][1];
+
+        let reponseUtilisateur = prompt(question);
+
+        if (reponseUtilisateur === null) {
+          alert("Question ignorée.");
+          continue;
+        }
+
+        if (reponseUtilisateur.trim().toLowerCase() === reponseCorrecte.trim().toLowerCase()) {
+          alert(" Réponse juste !");
+          score++;
+        } else {
+          alert(` Réponse fausse ! La bonne réponse était : ${reponseCorrecte}`);
+        }
+      }
+
+      alert(` Vous avez répondu correctement à ${score} question${score !== 1 ? 's' : ''} sur ${QUESTIONS.length} !`);
+    }
+  </script>
+</body>
+</html>
